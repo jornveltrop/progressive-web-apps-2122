@@ -1,0 +1,32 @@
+<main>
+    <section class="titels">
+        <h2>Zoek je favoriete kunstwerken!</h2>
+        <h1>Welkom</h1>
+    </section>
+
+    <section class="loader">
+        <div></div>
+    </section>
+
+    <section class="resultaten">
+
+
+    {{#each objects}}
+        <article id="{{objectNumber}}">
+            <h3>{{title}}</h3>
+            <img src="{{webImage.url}}700">
+        </article>
+    {{/each}}
+
+        
+
+        <img class="errorImg" src="">
+    </section>
+
+    <form>
+        <input type="text" placeholder="Zoek kunstwerken">
+        <button type="submit">🔍</button>
+    </form>
+</main>
+
+
