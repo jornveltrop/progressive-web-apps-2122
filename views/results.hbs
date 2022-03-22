@@ -1,11 +1,12 @@
 <main>
     <section class="titels">
-        <h1>{{title}}</h1>
+        <h2>{{subtitle}}</h2>
+        <h1><span>{{title}}</span></h1>
     </section>
 
     <section class="resultaten">
         {{#each objects}}
-            <article id="{{objectNumber}}">
+            <article>
                 <a href="/detail/{{objectNumber}}">
                     <h3>{{title}}</h3>
                     <img src="{{webImage.url}}700">
