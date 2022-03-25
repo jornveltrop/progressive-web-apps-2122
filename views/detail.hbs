@@ -1,10 +1,14 @@
 <main>
-    <section class="detail">
-        <h1>{{object.label.title}}</h1>
-        <img src="{{object.webImage.url}}{{imgSize}}"> 
-        <p>{{object.principalMaker}}, {{object.physicalMedium}}, {{object.dating.presentingDate}}</p>
-        <p>{{object.label.description}}</p>
-    </section>
+    <article class="detail">
+        <header>
+            <h1>{{object.label.title}}</h1>
+            <p>{{object.principalMaker}}, {{object.physicalMedium}}, {{object.dating.presentingDate}}</p>
+        </header>
+        <section>
+            <img src="{{object.webImage.url}}{{imgSize}}"> 
+            <p>{{object.label.description}}</p> 
+        </section>
+    </article>
 
     {{> search }}
 </main>

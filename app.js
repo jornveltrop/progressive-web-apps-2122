@@ -21,6 +21,8 @@ app.engine('hbs', handlebars({extname: '.hbs'}));
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
+
+
 //Routing
 app.get('/', (req, res) => {
     let query = "";
@@ -46,11 +48,18 @@ app.get('/search', (req, res) => {
         .then(async response => {
             let data = await response.json()
             let objects = data.artObjects
-            res.render('results', {
-                title: req.query.q,
-                subtitle: 'Resultaten voor:',
-                objects
-            })
+            if (objects == 0) {
+                res.render('error', {
+                    title: req.query.q,
+                    subtitle: 'Helaas, geen resultaten voor:'
+                })
+            } else {
+                res.render('results', {
+                    title: req.query.q,
+                    subtitle: 'Resultaten voor:',
+                    objects
+                })
+            }            
         })
 })
 

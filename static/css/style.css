@@ -24,7 +24,7 @@ html, body {
     scroll-behavior: smooth;
 }
 
-header {
+body > header {
     position:fixed;
     display: flex;
     justify-content:space-between;
@@ -34,7 +34,7 @@ header {
     z-index: 2;
 }
 
-header::before {
+body > header::before {
     content: "";
     position: absolute;
     width: calc(100% - 6em);
@@ -43,7 +43,7 @@ header::before {
     height: 1px;
 }
 
-header img {
+body > header img {
     height: 3em;  
 }
 
@@ -154,7 +154,7 @@ article:hover img {
     padding-top: 7em;
     width: 100%;
     max-width: 23em;
-    display: none;
+    display: flex;
 }
 
 .visible {
@@ -314,6 +314,44 @@ aside p {
 }
 
 
+.detail {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    flex-direction: column;
+    height: 100%;
+    align-content: flex-start;
+    align-self: flex-start;
+    cursor: inherit;
+}
+
+.detail header {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.detail header p {
+    font-style: italic;
+}
+
+.detail section {
+    width: 100%;
+    display: flex;
+    gap: 1em;
+}
+
+.detail section p {
+    max-width: 30em;
+}
+
+.detail img {
+    width: 50%;
+}
+
+.detail:hover img {
+    transform: none;
+    transition: none;
+}
 
 @media only screen and (max-width: 1100px) {
     main {
@@ -368,5 +406,17 @@ aside p {
         height: calc(100% - 6.5em);
         top: 6.5em;
         max-width: 100%;
+    }
+
+    .detail section {
+        flex-direction: column;
+    }
+
+    .detail img {
+        width: 100%;
+    }
+
+    .detail {
+        margin-bottom: 4em;
     }
 }
