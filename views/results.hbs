@@ -1,0 +1,21 @@
+<main>
+    <section class="titels">
+        <h2>{{subtitle}}</h2>
+        <h1><span>'{{title}}'</span></h1>
+    </section>
+
+    <section class="resultaten">
+        {{#each objects}}
+            <article>
+                <a href="/detail/{{objectNumber}}">
+                    <h3>{{title}}</h3>
+                    <img src="{{webImage.url}}700">
+                </a>
+            </article>
+        {{/each}}
+    </section>
+
+    {{> search }}
+</main>
+
+
