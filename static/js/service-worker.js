@@ -3,7 +3,10 @@ const CORE_FILES = [
     '/css/style.css',
     '/js/app.js',
     '/js/modules/serviceWorker.js',
-    '/js/modules/enhanchedDetail.js'
+    '/js/modules/enhanchedDetail.js',
+    '/font/Rijksmuseum-Normal.woff',
+    '/font/Rijksmuseum-Bold.woff',
+    '/'
 ]
 
 self.addEventListener('install', function(event) {
@@ -20,5 +23,15 @@ self.addEventListener('activate', function(event) {
 })
 
 self.addEventListener('fetch', function(event) {
-    console.log("[serviceWorker] Fetching", e.request.url);
-})
+    console.log('hoi')
+    event.respondWith(
+      caches.open(CORE).then(function(cache) {
+        return cache.match(event.request).then(function (response) {
+          return response || fetch(event.request).then(function(response) {
+            cache.put(event.request, response.clone());
+            return response;
+          });
+        });
+      })
+    );
+  });

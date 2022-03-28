@@ -16,7 +16,7 @@ export function enhanchedDetail() {
         event.preventDefault();
 
         let clickedID = this.id;
-        console.log(window.location);
+        console.log(window.location.pathname);
         let url = '/detail/' + clickedID;
         history.pushState({id:clickedID}, '', url)
 
