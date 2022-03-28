@@ -59,5 +59,9 @@ De maker van deze app is: [*Jorn Veltrop*](https://github.com/jornveltrop)
 ## Contributing
 Als je wilt bijdragen aan deze app kun je dat doen door middel van een [Issue](https://github.com/jornveltrop/progressive-web-apps-2122/issues).
 
+## Job Story - Service Worker
+1. Als bezoeker van Rijks Library wil ik de homepagina offline kunnen bekijken, zodat ik altijd (snel) wat kunst kan zien, zonder dat ik internet heb.
+2. Als bezoeker van Rijks Library wil ik mijn gezochten resultaten in cache hebben opgeslagen, als dit niet teveel geheugen kost, zodat ik deze sneller kan bekijken.
+
 ## License
 Dit project valt onder de MIT [license](https://github.com/jornveltrop/progressive-web-apps-2122/blob/main/LICENSE).

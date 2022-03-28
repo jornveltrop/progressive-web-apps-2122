@@ -1,3 +1,3 @@
-import { handleRoutes } from './modules/router.js';
+import { enhanchedDetail } from './modules/enhanchedDetail.js';
 
-handleRoutes();
+enhanchedDetail();
