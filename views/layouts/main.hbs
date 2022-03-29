@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <link rel="manifest" href="/manifest.json">
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="/images/icons/favicon.ico">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,5 +19,21 @@
 <body>
     {{> header }}
     {{{body}}}
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker
+                .register('/service-worker.js')
+                .then(function(registration) {
+                    console.log("Service Worker Registered", registration);
+                    return registration.update();
+                })
+                .catch(function(err) {
+                    console.log("Service Worker Failed to Register", err);
+                })
+            })
+        }
+    </script>
 </body>
 </html>

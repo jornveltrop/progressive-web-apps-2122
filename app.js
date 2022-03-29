@@ -77,7 +77,13 @@ app.get('/detail/:id', (req, res) => {
         })
 })
 
+app.get('/offline', (req, res) => {
+    res.render('offline')
+});
+
 // Set server
 app.listen(port, () => {
     console.log(`Gebruikte poort:${port}!`)
 });
+
+
