@@ -1,4 +1,4 @@
-const CACHE_VERSION = 3;
+const CACHE_VERSION = 4;
 
 const CORE = 'core-cache';
 const CORE_FILES = [
@@ -13,6 +13,7 @@ const CORE_FILES = [
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(CORE).then(function(cache) {
+            self.skipWaiting();
             return cache.addAll(CORE_FILES);
         })
     )
@@ -24,17 +25,17 @@ self.addEventListener('activate', function(event) {
 })
 
 self.addEventListener('fetch', function(event) {
-    console.log("[serviceWorker] Fetching", event.request.url);
+    // console.log("[serviceWorker] Fetching", event.request.url);
 
     if (isCoreGetRequest(event.request)) {
-        console.log('Core get request: ', event.request.url);
+        // console.log('Core get request: ', event.request.url);
         // cache only strategy
         event.respondWith(
           caches.open(CORE)
             .then(cache => cache.match(event.request.url))
         )
     } else if (isHtmlGetRequest(event.request)) {
-        console.log('html get request', event.request.url)
+        // console.log('html get request', event.request.url)
         // generic fallback
         event.respondWith(
         caches.open('html-cache')
@@ -64,33 +65,17 @@ function fetchAndCache(request, cacheName) {
       })
   }
 
-/*
-    Checks if a request is a GET and HTML request
-
-    @param {Object} request        The request object
-    @returns {Boolean}            Boolean value indicating whether the request is a GET and HTML request
-*/
 function isHtmlGetRequest(request) {
-    return request.method === 'GET' && (request.headers.get('accept') !== null && request.headers.get('accept').includes('text/html'));
+    // console.log(getPathName(request.url));
+    let paths = getPathName(request.url);
+    return request.method === 'GET' && (request.headers.get('accept') !== null && request.headers.get('accept').includes('text/html')) && !(paths.includes('search'));
 }
 
-/*
-* Checks if a request is a core GET request
-*
-* @param {Object} request        The request object
-* @returns {Boolean}            Boolean value indicating whether the request is in the core mapping
-*/
 function isCoreGetRequest(request) {
-return request.method === 'GET' && CORE_FILES.includes(getPathName(request.url));
+    return request.method === 'GET' && CORE_FILES.includes(getPathName(request.url));
 }
 
-/*
-* Get a pathname from a full URL by stripping off domain
-*
-* @param {Object} requestUrl        The request object, e.g. https://www.mydomain.com/index.css
-* @returns {String}                Relative url to the domain, e.g. index.css
-*/
 function getPathName(requestUrl) {
-const url = new URL(requestUrl);
-return url.pathname;
+    const url = new URL(requestUrl);
+    return url.pathname;
 }

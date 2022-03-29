@@ -72,7 +72,7 @@ app.get('/detail/:id', (req, res) => {
         .then(async response => {
             let data = await response.json()
             let object = data.artObject
-            console.log(object);
+            // console.log(object);
             res.render('detail', { object, imgSize })
         })
 })
