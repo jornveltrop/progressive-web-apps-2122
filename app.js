@@ -78,7 +78,10 @@ app.get('/detail/:id', (req, res) => {
 })
 
 app.get('/offline', (req, res) => {
-    res.render('offline')
+    res.render('offline', {
+        title: 'Helaas...',
+        subtitle: 'De website is offline.'
+    })
 });
 
 // Set server

@@ -136,6 +136,7 @@ section {
 
 article {
     width: 23em;
+    position: relative;
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -161,13 +162,20 @@ article:hover img {
     display: inline;
 }
 
-article img {
+article a img {
     width: 100%;
     transition: .5s ease-in-out;
 }
 
 article h3 {
     margin-bottom: .5em;
+}
+
+article > img {
+    position: absolute;
+    bottom: .5em;
+    right: .5em;
+    height: 2em;
 }
 
 

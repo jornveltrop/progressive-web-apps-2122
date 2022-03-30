@@ -1,4 +1,4 @@
-const CACHE_VERSION = 4;
+const CACHE_VERSION = 1;
 
 const CORE = 'core-cache';
 const CORE_FILES = [
@@ -7,6 +7,7 @@ const CORE_FILES = [
     '/font/Rijksmuseum-Normal.woff',
     '/font/Rijksmuseum-Bold.woff',
     '/images/rijks-library-logo.svg',
+    '/images/empty_frame.png',
     '/offline'
 ]
 
@@ -40,18 +41,38 @@ self.addEventListener('fetch', function(event) {
         event.respondWith(
         caches.open('html-cache')
             .then(cache => cache.match(event.request.url))
-            .then(response => response ? response : fetchAndCache(event.request, 'html-cache'))
+            .then(response => {
+                if (response) {
+                    event.waitUntil(
+                        fetchAndCache(event.request.url, 'html-cache')
+                    )
+                    return response
+                } else {
+                    return fetchAndCache(event.request.url, 'html-cache')
+                }
+            })
             .catch(e => {
             return caches.open(CORE)
                 .then(cache => cache.match('/offline'))
             })
         )
+    } else if (isOtherGetRequest(event.request)) {
+        event.respondWith(
+            fetch(event.request)
+                .then(response => {
+                    return response;
+                })
+                .catch(e => {
+                    return caches.open(CORE)
+                        .then(cache => cache.match('/offline'))
+                })
+        )
+
     }
 });
 
+
 // -------- HELPERS
-
-
 function fetchAndCache(request, cacheName) {
     return fetch(request)
       .then(response => {
@@ -73,6 +94,10 @@ function isHtmlGetRequest(request) {
 
 function isCoreGetRequest(request) {
     return request.method === 'GET' && CORE_FILES.includes(getPathName(request.url));
+}
+
+function isOtherGetRequest(request) {
+    return request.method === 'GET' && (request.headers.get('accept') !== null && request.headers.get('accept').includes('text/html'));
 }
 
 function getPathName(requestUrl) {
