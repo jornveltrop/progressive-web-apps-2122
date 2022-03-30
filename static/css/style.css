@@ -32,6 +32,7 @@ body > header {
     padding: 3em 3em 1.5em 3em;
     background-color: rgb(27, 27, 27);
     z-index: 2;
+    align-items: center;
 }
 
 body > header::before {
@@ -43,8 +44,12 @@ body > header::before {
     height: 1px;
 }
 
-body > header img {
+body > header a:nth-of-type(1) img {
     height: 3em;  
+}
+
+body > header a:nth-of-type(2) img {
+    height: 2em;
 }
 
 main {
@@ -359,6 +364,17 @@ aside p {
 .detail:hover img {
     transform: none;
     transition: none;
+}
+
+.bookmarks {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.bookmarks a {
+    text-decoration: underline;
 }
 
 @media only screen and (max-width: 1100px) {

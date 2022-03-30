@@ -44,7 +44,33 @@ export async function initBookmark() {
     }
 }
 
+export async function placeBookmarks() {
+    if ('serviceWorker' in navigator) {
+        const bookmarks = document.querySelector('.bookmarks');
+        if (bookmarks != undefined) {
+            let html = ''
 
+            caches.open('bookmarks')
+                .then(function(cache) {
+                    // console.log(cache)
+                    cache.keys()
+                        .then(keys => {
+                            // console.log(keys)
+                            keys.forEach(key => {
+                                let url = getPathName(key.url)
+                                html += `<a href="${url}">${url}</a>`
+                            })
+                            bookmarks.insertAdjacentHTML('afterBegin', html)
+                        });
+                })
+        }
+    }   
+}
+
+function getPathName(requestUrl) {
+    const url = new URL(requestUrl);
+    return url.pathname;
+}
 
 
 

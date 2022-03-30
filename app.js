@@ -77,6 +77,12 @@ app.get('/detail/:id', (req, res) => {
         })
 })
 
+app.get('/bookmarks', (req, res) => {
+    res.render('bookmarks', {
+        title: 'Opgeslagen items'
+    })
+});
+
 app.get('/offline', (req, res) => {
     res.render('offline', {
         title: 'Helaas...',
