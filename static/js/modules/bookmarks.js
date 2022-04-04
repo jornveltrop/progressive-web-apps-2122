@@ -52,19 +52,45 @@ export async function placeBookmarks() {
 
             caches.open('bookmarks')
                 .then(function(cache) {
-                    // console.log(cache)
                     cache.keys()
                         .then(keys => {
-                            // console.log(keys)
-                            keys.forEach(key => {
-                                let url = getPathName(key.url)
-                                html += `<a href="${url}">${url}</a>`
-                            })
+                            console.log(keys);
+                            if (keys.length > 0) {
+                                keys.forEach(key => {
+                                    let url = getPathName(key.url)
+                                    html += `<a href="${url}">${url}</a>`
+                                })
+                                html += '<a class="deleteBookmarks" deleteBookmarks>Verwijder alle opgeslagen items</a>'
+                            }
+                            else {
+                                html = "<h3>Helaas...</h3><p>Je hebt nog geen opgeslagen items</p>"
+                            }
                             bookmarks.insertAdjacentHTML('afterBegin', html)
-                        });
+                        })
+                        .then( _ => {
+                            const deleteBookmark = document.querySelector('.deleteBookmarks')
+                            if (deleteBookmark) {
+                                deleteBookmark.addEventListener('click', deleteBookmarks)
+                            }
+                        })
                 })
         }
     }   
+}
+
+export async function deleteBookmarks() {
+    if ('serviceWorker' in navigator) {
+        const bookmarks = document.querySelector('.bookmarks');
+        if (bookmarks != undefined) {
+            caches.delete('bookmarks')
+                .then(
+                    location.reload()
+                )
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+    }
 }
 
 function getPathName(requestUrl) {

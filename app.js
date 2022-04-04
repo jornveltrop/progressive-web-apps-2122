@@ -22,7 +22,6 @@ app.set('view engine', 'hbs');
 app.set('views', './views');
 
 
-
 //Routing
 app.get('/', (req, res) => {
     let query = "";

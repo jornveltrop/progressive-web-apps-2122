@@ -377,6 +377,15 @@ aside p {
     text-decoration: underline;
 }
 
+.deleteBookmarks {
+    font-family: "Rijksmuseum Bold";
+    margin-top: 2em;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-bottom: 4em;
+}
+
+
 @media only screen and (max-width: 1100px) {
     main {
         flex-direction: column;
