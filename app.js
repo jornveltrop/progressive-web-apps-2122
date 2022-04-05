@@ -9,7 +9,7 @@ require('dotenv').config()
 //Variabelen
 const app = express();
 const apiKey = process.env.APIKEY;
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const amountResults = "25"
 const apiURL = `https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}`;
 
