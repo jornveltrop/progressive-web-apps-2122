@@ -5,12 +5,19 @@
             <p>{{object.principalMaker}}, {{object.physicalMedium}}, {{object.dating.presentingDate}}</p>
         </header>
         <section>
-            <img src="{{object.webImage.url}}{{imgSize}}"> 
+            <img alt="{{object.label.title}}" src="{{#if object.webImage.url}}{{object.webImage.url}}{{imgSize}}{{else}}./images/empty_frame.png{{/if}}" width="{{object.webImage.width}}" height="{{object.webImage.height}}" sizes="(max-width: 650px) 100vw,(min-width: 651px) 100vw,(min-width: 1101px) 50vw" 
+                        srcset="{{object.webImage.url}}{{imgSize}} {{imgSize}}w,
+                        {{object.webImage.url}}1000 1000w,
+                        {{object.webImage.url}}700 700w,
+                        {{object.webImage.url}}600 600w,
+                        {{object.webImage.url}}500 500w,
+                        {{object.webImage.url}}400 400w,
+                        {{object.webImage.url}}300 300w,
+                        {{object.webImage.url}}200 200w,
+                        {{object.webImage.url}}100 100w" />
             <p>{{object.label.description}}</p> 
         </section>
     </article>
 
     {{> search }}
 </main>
-
-
