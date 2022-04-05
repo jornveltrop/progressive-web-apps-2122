@@ -96,33 +96,6 @@ section {
     flex-direction: column;
 }
 
-.loader {
-    width: 100%;
-    height: 70vh;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    display: none;
-    padding-left: calc(30% - 3em);
-}
-
-.loader div {
-    width: 4.5em;
-    height: 4.5em;
-    border: 9px solid #f3f3f3;
-    border-top: 10px solid #d55140;
-    border-radius: 100%;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 .resultaten {
     width: 100%;
     justify-content: center;
@@ -229,113 +202,6 @@ form button {
     z-index: 2;
 }
 
-aside {
-    background-color: #d55140;
-    width: 100%;
-    max-width: 30em;
-    height: calc(100% - 7.5em);
-    position: fixed;
-    top: 7.5em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-    transform: translateX(-101%);
-    transition: transform 1s ease-in-out;
-}
-
-aside > section {
-    flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
-}
-
-.asideOpen {
-    transform: translateX(0);
-    transition: transform 1s ease-in-out;
-}
-
-aside nav {
-    display: flex;
-    top: 0;
-    padding: 1em;
-    justify-content: flex-end;
-    position: absolute;
-    align-self: flex-end;
-    z-index: 1;
-}
-
-aside nav img {
-    width: 2.7em;
-    height: auto;
-    transition: .3s ease-in-out;
-}
-
-aside nav button:hover img {
-    transform: scale(1.07);
-    transition: .3s ease-in-out;
-}
-
-aside h2 {
-    font-size: 1.7em;
-    font-family: "Rijksmuseum Bold", sans-serif;
-    text-transform: uppercase;
-}
-
-aside div {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    position: relative;
-}
-
-aside img {
-    width: 100%;
-    height: auto;
-}
-
-aside .arrowIcon {
-    position: absolute;
-    bottom: 3em;
-    width: 3em;
-    filter: drop-shadow(0 0 10px #000);
-    animation: scrollHint 1.5s ease-in-out infinite alternate;
-    opacity: 0;
-    transition: opacity .5s ease-in-out;
-}
-
-aside .arrowVisible {
-    opacity: 1;
-    transition: opacity .5s ease-in-out;
-}
-
-@keyframes scrollHint {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(7px);
-    }
-}
-
-aside > section section {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 2em;
-}
-
-aside h3 {
-    font-size: 1.3em;
-    font-style: italic;
-}
-
-aside p {
-    margin-top: 1em;
-    font-size: 1em;
-}
-
 
 .detail {
     display: flex;
@@ -418,17 +284,9 @@ aside p {
         gap: 1em;
     }
 
-    .loader {
-        padding: 0;
-    }
-
     .resultaten article {
         margin: 1em 0em;
         width: 48%;
-    }
-
-    aside {
-        max-width: 50vw;
     }
 }
 
@@ -445,12 +303,6 @@ aside p {
     body > header a:first-of-type img {
         height: 2em;
         width: auto;
-    }
-
-    aside {
-        height: calc(100% - 6.5em);
-        top: 6.5em;
-        max-width: 100%;
     }
 
     .detail section {
