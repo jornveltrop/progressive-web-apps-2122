@@ -1,6 +1,7 @@
 // Requires
 const express = require('express');
 const hbs  = require('express-handlebars');
+const { url } = require('inspector');
 const handlebars = hbs.engine;
 const fetch = require('node-fetch')
 require('dotenv').config()
@@ -9,7 +10,7 @@ require('dotenv').config()
 const app = express();
 const apiKey = process.env.APIKEY;
 const port = process.env.PORT;
-let amountResults = "100"
+let amountResults = "25"
 let apiURL = `https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}`;
 
 
@@ -31,6 +32,7 @@ app.get('/', (req, res) => {
         .then(async response => {
             let data = await response.json()
             let objects = data.artObjects
+
             res.render('home', {
                 title: 'Uitgelicht',
                 subtitle: '',
@@ -71,7 +73,7 @@ app.get('/detail/:id', (req, res) => {
         .then(async response => {
             let data = await response.json()
             let object = data.artObject
-            // console.log(object);
+
             res.render('detail', { object, imgSize })
         })
 })

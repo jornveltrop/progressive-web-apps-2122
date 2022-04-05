@@ -8,9 +8,16 @@
             <article>
                 <a href="/detail/{{objectNumber}}" id="{{objectNumber}}">
                     <h3>{{title}}</h3>
-                    <img src="{{webImage.url}}700">
+                    <img alt="{{title}}" src="{{webImage.url}}700" width="{{webImage.width}}" height="{{webImage.height}}" sizes="(max-width: 650px) 100vw,(min-width: 651px) 50vw,(min-width: 1101px) 25vw" 
+                        srcset="{{webImage.url}}700 700w,
+                        {{webImage.url}}600 600w,
+                        {{webImage.url}}500 500w,
+                        {{webImage.url}}400 400w,
+                        {{webImage.url}}300 300w,
+                        {{webImage.url}}200 200w,
+                        {{webImage.url}}100 100w" />
                 </a>
-                <img src="images/bookmark.svg" bookmark bookmarkID="{{objectNumber}}">
+                <img alt="bookmark" src="images/bookmark.svg" bookmark bookmarkID="{{objectNumber}}">
             </article>
         {{/each}}
     </section>

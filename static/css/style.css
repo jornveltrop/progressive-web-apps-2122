@@ -1,11 +1,13 @@
 @font-face {
     font-family: "Rijksmuseum Normal";
     src: url("../font/Rijksmuseum-Normal.woff") format("woff");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Rijksmuseum Bold";
     src: url("../font/Rijksmuseum-Bold.woff") format("woff");
+    font-display: swap;
 }
 
 * { 
@@ -46,10 +48,12 @@ body > header::before {
 
 body > header a:nth-of-type(1) img {
     height: 3em;  
+    width: auto;
 }
 
 body > header a:nth-of-type(2) img {
     height: 2em;
+    width: auto;
 }
 
 main {
@@ -124,6 +128,7 @@ section {
     justify-content: center;
     flex-wrap: wrap;
     padding-left: calc(30% - 3em);
+    margin-bottom: 4em;
 }
 
 .loaderDisplay {
@@ -161,6 +166,7 @@ article:hover img {
     width: 100%;
     max-width: 23em;
     display: flex;
+    height: auto;
 }
 
 .visible {
@@ -169,6 +175,7 @@ article:hover img {
 
 article a img {
     width: 100%;
+    height: auto;
     transition: .5s ease-in-out;
 }
 
@@ -178,9 +185,10 @@ article h3 {
 
 article > img {
     position: absolute;
-    bottom: .5em;
-    right: .5em;
+    bottom: 1em;
+    right: 1em;
     height: 2em;
+    width: auto;
 }
 
 
@@ -259,6 +267,7 @@ aside nav {
 
 aside nav img {
     width: 2.7em;
+    height: auto;
     transition: .3s ease-in-out;
 }
 
@@ -283,6 +292,7 @@ aside div {
 
 aside img {
     width: 100%;
+    height: auto;
 }
 
 aside .arrowIcon {
@@ -359,6 +369,7 @@ aside p {
 
 .detail img {
     width: 50%;
+    height: auto;
 }
 
 .detail:hover img {
@@ -433,6 +444,7 @@ aside p {
 
     header img {
         height: 2em;
+        width: auto;
     }
 
     aside {
@@ -447,6 +459,7 @@ aside p {
 
     .detail img {
         width: 100%;
+        height: auto;
     }
 
     .detail {

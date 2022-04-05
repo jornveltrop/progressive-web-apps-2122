@@ -1,4 +1,4 @@
-const CACHE_VERSION = 22;
+const CACHE_VERSION = 25;
 
 const CORE = 'core-cache';
 const CORE_FILES = [
@@ -43,8 +43,7 @@ self.addEventListener('fetch', function(event) {
         // console.log('html get request', event.request.url)
         // generic fallback
         event.respondWith(
-        caches.open('html-cache')
-            .then(cache => cache.match(event.request.url))
+        caches.match(event.request.url)
             .then(response => {
                 if (response) {
                     event.waitUntil(
@@ -91,7 +90,6 @@ function fetchAndCache(request, cacheName) {
   }
 
 function isHtmlGetRequest(request) {
-    // console.log(getPathName(request.url));
     let paths = getPathName(request.url);
     return request.method === 'GET' && (request.headers.get('accept') !== null && request.headers.get('accept').includes('text/html')) && !(paths.includes('search'));
 }
