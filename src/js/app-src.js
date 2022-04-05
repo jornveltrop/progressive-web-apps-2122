@@ -36,7 +36,6 @@ async function initBookmark() {
             const url = 'detail/' + bookmark.getAttribute('bookmarkID')
 
             bookmark.addEventListener('click', function(e) {
-                console.log(url);
                 handleBookmark(url, cache, bookmark)
             })
 
@@ -61,7 +60,6 @@ async function placeBookmarks() {
                 .then(function(cache) {
                     cache.keys()
                         .then(keys => {
-                            console.log(keys);
                             if (keys.length > 0) {
                                 keys.forEach(key => {
                                     let url = getPathName(key.url)

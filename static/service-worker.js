@@ -1,4 +1,4 @@
-const CACHE_VERSION = 30;
+const CACHE_VERSION = 33;
 
 const CORE = 'core-cache';
 const CORE_FILES = [
@@ -29,18 +29,15 @@ self.addEventListener('activate', function(event) {
 })
 
 self.addEventListener('fetch', function(event) {
-    // console.log("[serviceWorker] Fetching", event.request.url);
 
     if (isCoreGetRequest(event.request)) {
-        // console.log('Core get request: ', event.request.url);
-        // cache only strategy
+        //Pakt meteen de cache versie
         event.respondWith(
           caches.open(CORE)
             .then(cache => cache.match(event.request.url))
         )
     } else if (isHtmlGetRequest(event.request)) {
-        // console.log('html get request', event.request.url)
-        // generic fallback
+        //Pakt cache als die er is, ondertussen nieuwe versie in cache opslaan
         event.respondWith(
         caches.match(event.request.url)
             .then(response => {

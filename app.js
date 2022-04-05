@@ -10,8 +10,8 @@ require('dotenv').config()
 const app = express();
 const apiKey = process.env.APIKEY;
 const port = process.env.PORT;
-let amountResults = "25"
-let apiURL = `https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}`;
+const amountResults = "25"
+const apiURL = `https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}`;
 
 // Compress alle responses
 app.use(compression())
@@ -23,6 +23,7 @@ app.use(function(req, res, next) {
     }
     next()
 })
+
 
 // Aangeven waar onze statishce files zich bevinden  
 app.use(express.static('static'));
@@ -36,8 +37,8 @@ app.set('views', './views');
 
 //Routing
 app.get('/', (req, res) => {
-    let query = "";
-    let getURL = apiURL + `&q=${query}&ps=${amountResults}`;
+    const query = "";
+    const getURL = apiURL + `&q=${query}&ps=${amountResults}`;
 
     fetch(getURL)
         .then(async response => {
@@ -76,7 +77,7 @@ app.get('/search', (req, res) => {
 })
 
 app.get('/detail/:id', (req, res) => {
-    let imgSize = 2000;
+    const imgSize = 2000;
     const detailURL = `https://www.rijksmuseum.nl/api/nl/collection/`;
     let getURL = detailURL + `${req.params.id}?key=${apiKey}`;
 
@@ -106,5 +107,3 @@ app.get('/offline', (req, res) => {
 app.listen(port, () => {
     console.log(`Gebruikte poort:${port}!`)
 });
-
-
