@@ -1,8 +1,8 @@
 // Requires
 const express = require('express');
 const hbs  = require('express-handlebars');
-const { url } = require('inspector');
 const handlebars = hbs.engine;
+const compression = require('compression')
 const fetch = require('node-fetch')
 require('dotenv').config()
 
@@ -16,6 +16,9 @@ let apiURL = `https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}`;
 
 // Aangeven waar onze statishce files zich bevinden  
 app.use(express.static('static'));
+
+// Compress alle responses
+app.use(compression())
 
 // Templating engine
 app.engine('hbs', handlebars({extname: '.hbs'}));

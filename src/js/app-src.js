@@ -1,3 +1,10 @@
+function init() {
+    initBookmark();
+    placeBookmarks();
+}
+
+init();
+
 async function handleBookmark(url, cache, bookmarkElement) {
     const isBookmarked = await cache.match(url)
 
@@ -19,13 +26,13 @@ async function handleBookmark(url, cache, bookmarkElement) {
     }
 }
 
-export async function initBookmark() {
+async function initBookmark() {
     const bookmarks = document.querySelectorAll('[bookmark]');
 
     if ('serviceWorker' in navigator) {
         const cache = await caches.open('bookmarks')
 
-        bookmarks.forEach(async bookmark => {
+        bookmarks.forEach( async function(bookmark) {
             const url = 'detail/' + bookmark.getAttribute('bookmarkID')
 
             bookmark.addEventListener('click', function(e) {
@@ -44,7 +51,7 @@ export async function initBookmark() {
     }
 }
 
-export async function placeBookmarks() {
+async function placeBookmarks() {
     if ('serviceWorker' in navigator) {
         const bookmarks = document.querySelector('.bookmarks');
         if (bookmarks != undefined) {
@@ -58,7 +65,7 @@ export async function placeBookmarks() {
                             if (keys.length > 0) {
                                 keys.forEach(key => {
                                     let url = getPathName(key.url)
-                                    html += `<a href="${url}">${url}</a>`
+                                    html += '<a href="' + url + '">' + url + '</a>'
                                 })
                                 html += '<a class="deleteBookmarks" deleteBookmarks>Verwijder alle opgeslagen items</a>'
                             }
@@ -78,7 +85,7 @@ export async function placeBookmarks() {
     }   
 }
 
-export async function deleteBookmarks() {
+async function deleteBookmarks() {
     if ('serviceWorker' in navigator) {
         const bookmarks = document.querySelector('.bookmarks');
         if (bookmarks != undefined) {
@@ -97,6 +104,3 @@ function getPathName(requestUrl) {
     const url = new URL(requestUrl);
     return url.pathname;
 }
-
-
-

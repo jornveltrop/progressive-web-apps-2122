@@ -1,17 +1,16 @@
-const CACHE_VERSION = 25;
+const CACHE_VERSION = 29;
 
 const CORE = 'core-cache';
 const CORE_FILES = [
     '/css/style.css',
     '/js/app.js',
-    '/js/modules/bookmarks.js',
-    '/js/modules/enhanchedDetail.js',
-    '/font/Rijksmuseum-Normal.woff',
-    '/font/Rijksmuseum-Bold.woff',
+    '/font/Rijksmuseum-Normal.woff2',
+    '/font/Rijksmuseum-Bold.woff2',
     '/images/rijks-library-logo.svg',
     '/images/bookmark_active.svg',
     '/images/bookmark.svg',
     '/images/empty_frame.png',
+    '/bookmarks',
     '/offline'
 ]
 
