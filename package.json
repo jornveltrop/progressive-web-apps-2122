@@ -22,7 +22,7 @@
   },
   "scripts": {
     "prestart": "npm run build",
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "build": "npm-run-all build:*",
     "build:css": "cleancss -o static/css/style.css src/css/style-src.css",
     "build:js": "node-minify --compressor uglify-js --input 'src/js/app-src.js' --output 'static/js/app.js'",
