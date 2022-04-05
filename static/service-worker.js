@@ -1,4 +1,4 @@
-const CACHE_VERSION = 29;
+const CACHE_VERSION = 30;
 
 const CORE = 'core-cache';
 const CORE_FILES = [
