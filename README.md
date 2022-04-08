@@ -35,7 +35,6 @@ Voor deze app heb ik als basis server side rendering gebruikt. Bij server side r
 
 Door al het denk- en rekenwerk op de server te doen, zal de FCP (First content paint) en LCP (Largest content paint) sneller zijn voor de bezoeker. Dit is dus beter voor de performance van je site. Zie ook [Critical render path](#Critical-render-path)
 
-
 ## Job Stories - Service Worker
 1. Als bezoeker van Rijks Library wil ik de homepagina offline kunnen bekijken, zodat ik altijd (snel) wat kunst kan zien, zonder dat ik internet heb. (Als je minstens 1x de site hebt bezocht mét internet)
 2. Als bezoeker van Rijks Library wil ik mijn gezochten detail resultaten in cache hebben opgeslagen, als dit niet teveel geheugen kost, zodat ik deze sneller kan bekijken.
@@ -70,14 +69,14 @@ Ik gebruik compress om alle files en items die gebruikt worden in file size te v
 <img src="content/compress.png" width="60%" alt="compress">
 
 ### Font-display: swap
-Font display: swap zorgt ervoor dat je custom fonts in de achtergrond kunt laden terwijl er tot die tijd een fallback font wordt laten zien. Dit verbetert de performance zodat het font het laden niet blokkeert
+Font display: swap zorgt ervoor dat je custom fonts in de achtergrond kunt laden terwijl er tot die tijd een fallback font wordt laten zien. Dit verbetert de performance zodat het font het laden niet blokkeert.
 
 ### Images
-Om de images te verbeteren hebn ik srcset toegevoegd. De browser kan met deze verschillende formaten de beste optie kiezen voor de context waarin deze zich begeeft. Bij traag internet zou de browser dus kunnen kiezen voor een kleinere foto, waardoor deze sneller wordt geladen. Sizes instellen helpt de browser om deze keuze beter te kunnen maken.
+Om de images te verbeteren heb ik 'srcset' toegevoegd. De browser kan met deze verschillende formaten de beste optie kiezen voor de context waarin deze zich begeeft. Bij traag internet zou de browser dus kunnen kiezen voor een kleinere foto, waardoor deze sneller wordt geladen. Sizes instellen helpt de browser om deze keuze beter te kunnen maken.
 
 <img src="content/srcset.png" width="60%" alt="srcset">
 
-Ook het toevoegen van een height en width aan img-tags verbeterd de performace. Zo zijn er namelijk minder layout shifts. Dit is beter voor de performance.
+Ook het toevoegen van een height en width aan img-tags verbetert de performace. Zo zijn er namelijk minder layout shifts. Dit is beter voor de performance.
 
 <img src="content/sizes.png" width="60%" alt="sizes">
 
