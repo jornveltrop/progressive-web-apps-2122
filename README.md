@@ -36,10 +36,6 @@ Voor deze app heb ik als basis server side rendering gebruikt. Bij server side r
 Door al het denk- en rekenwerk op de server te doen, zal de FCP (First content paint) en LCP (Largest content paint) sneller zijn voor de bezoeker. Dit is dus beter voor de performance van je site. Zie ook [Critical render path](#Critical-render-path)
 
 
-!!Flexen over hoe server werkt bij mij en waarom
-
-
-
 ## Job Stories - Service Worker
 1. Als bezoeker van Rijks Library wil ik de homepagina offline kunnen bekijken, zodat ik altijd (snel) wat kunst kan zien, zonder dat ik internet heb. (Als je minstens 1x de site hebt bezocht mét internet)
 2. Als bezoeker van Rijks Library wil ik mijn gezochten detail resultaten in cache hebben opgeslagen, als dit niet teveel geheugen kost, zodat ik deze sneller kan bekijken.
