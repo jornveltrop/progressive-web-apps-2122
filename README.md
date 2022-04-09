@@ -3,7 +3,7 @@
 ## Table of contents
   - [About](#about)
   - [Features](#features)
-  - [Client & server side rendering](#Client-&-server-side-rendering)
+  - [Client & server side rendering](#Client--server-side-rendering)
   - [Job Stories - Service Worker](#Job-Stories---Service-Worker)
   - [Activity Diagram](#Activity-Diagram)
   - [Critical render path](#Critical-render-path)
