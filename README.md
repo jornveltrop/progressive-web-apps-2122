@@ -1,9 +1,12 @@
 # <img src="content/banner.jpg" width="100%" alt="banner">
 
 ## Table of contents
-  - [Table of contents](#table-of-contents)
   - [About](#about)
   - [Features](#features)
+  - [Client & server side rendering](#Client-&-server-side-rendering)
+  - [Job Stories - Service Worker](#Job-Stories---Service Worker)
+  - [Activity Diagram](#Activity-Diagram)
+  - [Critical render path](#Critical-render-path)
   - [API documentation](#API-documentation)
   - [Installing](#installing)
   - [Author](#author)
@@ -19,7 +22,7 @@
 
 Deze web app maakt gebruik van de Rijksmuseum API. Deze haalt op basis van een zoekopdracht kunstwerken op uit hun database. 
 
-<img src="content/interface.png" width="100%" alt="banner">
+<img src="content/interface.png" width="100%" alt="interface">
 
 ## Features
 |                                                                   |     |
@@ -49,10 +52,10 @@ Door al het denk- en rekenwerk op de server te doen, zal de FCP (First content p
 Ik heb voor de caching strategie 'stale while revalidate' gekozen. Deze strategie houdt in dat als het request vanuit de caching geladen kan worden, dit gedaan wordt. Vervolgens wordt er in de achtergrond een nieuwe fetch gedaan om deze op te slaan in de cache, zo blijft je site toch up to date met een delay van 1 refresh. 
 
 Dit is mooi, aangezien je zo pagina's snel vanuit cache kan laten zien, als deze beschikbaar is, en deze meteen up to date blijft.
-<img src="content/service_worker.jpg" width="100%" alt="server">
+<img src="content/service_worker.jpg" width="100%" alt="service-worker">
 
 ### Client
-<img src="content/client.jpg" width="100%" alt="server">
+<img src="content/client.jpg" width="100%" alt="client">
 
 
 ## Critical render path
